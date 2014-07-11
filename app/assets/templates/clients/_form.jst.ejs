@@ -1,0 +1,81 @@
+<% var cxlLink; if(client.isNew()) { cxlLink = '#/clients' } else { cxlLink = '#/clients/' + client.id }; %>
+
+<ol class='breadcrumb'>
+  <li><a href="#/">home</a></li>
+  <li><a href="#/clients">clients</a></li>
+  <% if(client.isNew()) { %>
+    <li class="active">new</li>
+  <% } else { %>
+    <li>
+      <a href="#/clients/<%= client.id %>"><%= client.escape('name')%></a>
+    </li>
+    <li class='active'>edit</li>
+  <% } %>
+</ol>
+
+<form class='form-horizontal' role='form'>
+  <p id="errors"></p>
+  
+  <div class='form-group'>
+    <label
+      class='col-sm-2 control-label'
+      for='client_name'>Name:</label>
+    <div class="col-sm-6">
+      <input 
+        id='client_name'
+        class='form-control'
+        placeholder='Tim Cook'
+        type="text" 
+        name="client[name]" 
+        value="<%= client.escape('name') %>">
+    </div>
+  </div>
+  
+  <div class='form-group'>
+    <label
+      class='col-sm-2 control-label'
+      for='client_company'>Company:</label>
+    <div class="col-sm-6">
+      <input 
+        id='client_company'
+        class='form-control'
+        placeholder='Apple'
+        type="text" 
+        name="client[company]" 
+        value="<%= client.escape('company') %>">
+    </div>
+  </div>
+  
+  <div class='form-group'>
+    <label 
+      class='col-sm-2 control-label' 
+      for='client_phone'>Phone:</label>
+    <div class="col-sm-6">
+      <input 
+        id='client_phone'
+        class='form-control'
+        placeholder='(555) 123-4567'
+        type="text" 
+        name="client[phone]" 
+        value="<%= client.escape('phone') %>">
+    </div>
+  </div>
+  
+  <div class='form-group'>
+    <label
+      class='col-sm-2 control-label'
+      for='client_email'>Email:</label>
+    <div class="col-sm-6">
+      <input 
+        id="client_email"
+        class='form-control'
+        placeholder='tim@apple.com'
+        type="text" 
+        name="client[email]" 
+        value="<%= client.escape('email') %>">
+    </div>
+  </div>
+  <div class='form-group'>
+    <div class='col-sm-6 col-sm-offset-2'><button class='btn btn-sm btn-default'>Submit</button> <a href="<%= cxlLink %>">cancel</a></div>
+  </div>
+</form>

@@ -1,0 +1,59 @@
+<button
+  class="show-subdeliverables btn btn-sm btn-default 
+  <% if(subdeliverableCount == '0') { %> disabled <% } %>">
+  <span class='glyphicon glyphicon-chevron-right'></span> 
+  <span class='badge badge-primary'><%= subdeliverableCount %></span>
+</button>
+<button
+  class="hide-subdeliverables btn btn-sm btn-default 
+  <% if(subdeliverableCount == '0') { %> disabled <% } %>">
+  <span class='glyphicon glyphicon-chevron-down'></span>
+  <span class='badge'><%= subdeliverableCount %></span>
+</button>
+
+<% if(deliverable.get('completed')) { %>
+  <button 
+    class='deliverable-checkbox checked btn btn-sm btn-default'>
+  </button>  
+<% } else { %>
+  <button 
+    class='unchecked deliverable-checkbox btn btn-sm btn-default'>
+  </button>
+<% } %>
+
+<span class="<% if(deliverable.get('completed')) {%> completed <% } %>">
+  <%= deliverable.escape('name') %>
+</span>
+
+<div class='panel panel-warning panel-hours'>
+  <button
+    class='remove-hour btn btn-sm btn-warning 
+    <% if(deliverable.get('completed')) {%> disabled <% }%>
+    <% if(!removable) { %> greyed-out disabled <% } %>'>
+    <span class='glyphicon glyphicon-minus-sign'></span></button>
+  Hours: <%= hours %>
+  <button 
+    class='add-hour btn btn-sm btn-success
+    <% if(deliverable.get('completed')) {%> disabled <% } %>'>
+    <span class='glyphicon glyphicon-plus-sign'></span></button>
+</div>
+
+<button 
+  class="show-new-subdeliverable btn btn-sm btn-default">
+  new <span class='glyphicon glyphicon-leaf primary'></span>
+</button>
+
+<button 
+  class="remove-task btn btn-sm btn-default 
+  <% if(deliverable.get('completed')) {%> disabled <% } %>">
+  brn <span class='glyphicon glyphicon-fire danger'></span>
+</button>
+
+<button 
+  class="show-details btn btn-sm btn-default">
+  details <span class='glyphicon glyphicon-pencil'></span>
+</button>
+
+
+
+<ul class="subdeliverables"></ul>

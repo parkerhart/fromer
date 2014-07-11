@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+$body-bg: #FFD4B5;
+// danger #E80A01
+// primary 670CFF
+// warning FFAE0C
+// success 75C708
+// lightblue 0BCEF5
+$brand-primary:         #E86C38 !default;
+$brand-success:         #75C708 !default;
+$brand-info:            #37B0C7 !default;
+$brand-warning:         #FFAE0C !default;
+$brand-danger:          #E80A01 !default;
+
+$tooltip-bg: #777;
+
+
+@import "bootstrap";
+@font-face {
+  font-family: 'Glyphicons Halflings';
+}
+
+pre {
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: normal;
+  word-break: normal;
+}
+
+.alert {
+  margin-bottom: 0;
+}
+
+.static-alert {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(214,233,198, 0.8);
+  padding: 50px;
+}

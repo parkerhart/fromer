@@ -1,0 +1,62 @@
+<ol class='breadcrumb'>
+  <li><a href="#/">home</a></li>
+  <li><a href="#/projects">projects</a></li>
+  <li><a href='#/projects<% if(typeof project !== 'undefined') { %>
+    <%= project.id %>/'><%= project.escape('name').toLowerCase() %></a>
+    <% } else { %>
+      '>project</a>
+    <% }%></li>
+  <li><a href="#/invoices">invoices</a></li>
+  <li class='active'><%= invoice.get('number') %></li>
+</ol>
+
+<h2>Invoice No. <%= invoice.get('number') %></h2>
+<h4>date:</h4>
+<%= invoice.date() %>
+
+<a href="#/projects/<%= invoice.escape('project_id') %>"
+  ><span class='take-me-there glyphicon glyphicon-circle-arrow-right'></span></a>
+<h4>invoice to:</h4>
+<%= invoice.escape('client_name') %>
+<a href="#/clients/<%= invoice.escape('client_id') %>"
+  ><span class='take-me-there glyphicon glyphicon-circle-arrow-right'></span></a><br>
+<%= invoice.escape('client_phone') %><br>
+<%= invoice.escape('client_email') %><br>
+<br>
+<h4>work delivered:</h4>
+<table class='invoice-table table table-hover'>
+  <thead>
+    <tr>
+      <th class='col col-xs-7'>Description</th>
+      <th class='col-xs-2 center'>Hourly ($)</th>
+      <th class='col-xs-2 center'>Hours (#)</th>
+      <th class='col-xs-1 center'>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if(typeof deliverables !== 'undefined') { %>
+      <% deliverables.each(function(deliverable) { %>
+        <tr>
+          <td><%= deliverable.escape('name') %></td>
+          <td class='center after-x'>$<%= deliverable.escape('hourly') %></td>
+          <td class='center'><%= deliverable.escape('count') %></td>
+          <td class='center'>$<%= deliverable.total() %></td>
+        </tr>
+      <% }) %>
+    <% } %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan='3'></td>
+      <td class='center total'>
+        $<%= invoice.total() %>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+<a href="#/invoices/<%= invoice.id %>/edit">
+  edit invoice</a>&nbsp;
+<button 
+  class='drop-invoice btn btn-sm btn-default'>
+  drop invoice
+</button>

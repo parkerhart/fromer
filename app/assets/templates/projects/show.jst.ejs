@@ -1,0 +1,88 @@
+
+
+<ol class='breadcrumb'>
+  <li><a href="#/">home</a></li> 
+  
+  <% if(client) { %>
+    <li><a href="#/clients">clients</a></li>
+    <li><a href="#/clients/<%= client.id %>"><%= 
+        client.escape('name') 
+      %></a></li>
+  <% } else { %> 
+    <li>loading client...</li>
+  <% }%>
+  <li><a href="#/projects">projects</a></li>
+  <li class='active'><%= project.escape('name')%></li>
+</ol>
+
+<h2><%= project.escape('name') %> &nbsp; 
+  <small class='pull-right'>
+    status:
+    <% if(project.escape('open') === 'true') { %>
+      <span class='label label-success'>OPEN</span>
+    <% } else { %>
+      <span class='label label-warning'>CLOSED</span>
+    <% } %>
+  </small>
+</h2>
+<a href="#/projects/<%= project.id %>/edit">
+  edit project</a>&nbsp;
+<button 
+  class='delete-project btn btn-sm btn-default'>
+  delete project
+</button>
+
+<h4>hours:</h4>
+<div class='hours'>
+</div>
+
+<h4>hourly rate:</h4>
+<span id='hourly'
+  data-toggle="tooltip" 
+  data-placement="right" 
+  title="you are worth it!">
+$<%= project.escape('hourly') %>.00</span>
+
+<h4>invoices:</h4>
+<% project.invoices().each(function(invoice) { %>
+  <%= invoice.date() %>
+  <a href="#/invoices/<%= invoice.id %>">
+    <span 
+      class='take-me-there 
+      glyphicon glyphicon-circle-arrow-right'></span></a><br>
+<% })%>
+
+<h4>client:</h4>
+  <% if(client) { %>
+    <%= client.escape('name') %>
+    <a href='#/clients/<%= client.id %>'>
+    <span 
+      class='take-me-there 
+      glyphicon glyphicon-circle-arrow-right'></span></a>
+  <% } else { %> 
+    loading client...
+  <% } %>
+<h4>description:</h4>
+<pre class='pre-scrollable'><%= project.escape('description') %></pre>
+<h4>Deliverables:</h4>
+
+<form class='new-deliverable form-inline' role='form'>
+  <div class='form-group'>
+    <label for='deliverable_name' class='sr-only'></label>
+    <input 
+      type="text" 
+      class='form-control'
+      id='deliverable_name'
+      placeholder='What do you have to deliver?'
+      name="deliverable[name]">
+  </div>
+  
+  <div class='form-group'>
+    <button 
+      class='btn btn-sm btn-default'>
+      add deliverable
+    </button>
+  </div>
+</form>
+
+<ul class='deliverables'></ul>

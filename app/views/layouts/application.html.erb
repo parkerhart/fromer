@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Freelancer</title>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag 'favicon.png', type: 'png' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render partial: 'layouts/navbar' %>
+    <% if notice %>
+      <div class="static-alert notice alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <strong>Wow!</strong> <%= notice %>
+      </div>
+    <% end %>
+  
+    <% if alert %>
+      <div class="static-alert alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <strong>Whoa there!</strong> <%= alert %>
+      </div>
+    <% end %>
+
+    <div class='container'>
+      <%= yield %>
+    </div>
+    
+    <!-- modal div needs to be in top-level code -->
+    <div 
+      class='modal' 
+      id="deliverable-detail" 
+      tabindex="-1" 
+      role="dialog" 
+      aria-labelledby="myModalLabel" 
+      aria-hidden="true">
+    </div>
+  </body>
+</html>

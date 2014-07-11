@@ -1,0 +1,33 @@
+<ol class='breadcrumb'>
+  <li><a href="#/">home</a></li>
+  <li><a href="#/clients">clients</a></li>
+  <li class='active'><%= client.escape('name')%></li>
+</ol>
+
+<h2><%= client.escape('name') %></h2>
+<h4>company:</h4><%= client.escape('company') %>
+<h4>phone:</h4><%= client.escape('phone') %>
+<h4>email:</h4><%= client.escape('email') %>
+<h4>projects:</h4>
+<ul>
+  <% client.projects().each(function(project) { %>
+    <li>
+      
+        <%= project.escape('name') %> 
+        <a href="#/projects/<%= project.id %>">
+          <span class='take-me-there glyphicon glyphicon-circle-arrow-right'>
+          </span></a>
+    </li>
+  <% }) %>
+  <li>
+    <a href="#/clients/<%= client.id %>/projects/new">
+      new project
+    </a>
+  </li>
+</ul>
+<a href="#/clients/<%= client.id %>/edit">
+  edit client</a>&nbsp;
+<button 
+  class='drop-client btn btn-sm btn-default'>
+  drop client
+</button>
