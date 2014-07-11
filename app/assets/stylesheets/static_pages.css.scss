@@ -1,13 +1,13 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+// 483D8B F5302F E86C38
 body, html {
   height: 100%;
 }
 
 .navbar.redbar {
-  background-color: #F5302F;
+  background-color: #000080;
   margin-bottom: 0;
   a {
     color: white;
@@ -115,8 +115,8 @@ header .container {
   left: 100px;
   width: 900px;
   padding: 10px;
-  border-left: thick solid #E86C38;
-  border-right: thick solid #E86C38;
+  border-left: thick solid #FFFF00;
+  border-right: thick solid #FFFF00;
 //  background: rgb(243, 245, 247);
   background: lightgrey;
   overflow: hidden;
@@ -167,9 +167,9 @@ header .container {
       transition: 200ms ease;
     }
     > li.active > a {
-      background-color: #E86C38;
+      background-color: #20B2AA;
       color: white;
-      border: thin solid #E86C38;
+      border: thin solid #20B2AA;
       border-right: none;
       transition: 200ms ease;
       
